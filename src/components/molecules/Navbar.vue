@@ -79,7 +79,7 @@
     },
     methods: {
         logoutHandler(){
-            localStorage.clear('token')
+            localStorage.removeItem('token')
             setTimeout(()=> {
                 this.$router.replace('/login')
             }, 1500)
