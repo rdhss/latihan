@@ -4,6 +4,19 @@ import Register from "@/pages/Register.vue";
 import Posting from "@/pages/Posting.vue";
 import PostingById from "@/pages/PostingById.vue";
 
+const auth = (to, from, next) => {
+    const token = localStorage.getItem('token')
+    if (!token) next('/')
+    next()
+}
+
+const noAuth = (to, from, next) => {
+    const token = localStorage.getItem('token')
+    if (token) next('/')
+    next()
+}
+
+
 export default [
     {
         path: "/",
@@ -15,15 +28,18 @@ export default [
     },
     {
         path: "/register",
-        component: Register
+        component: Register,
+        beforeEnter: noAuth
     },
     {
         path: "/posting",
-        component: Posting
+        component: Posting,
+        beforeEnter: auth
     },
     {
         path: "/posting/:id",
-        component: PostingById
+        component: PostingById,
+        beforeEnter: auth
     }
 
 ]
