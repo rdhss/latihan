@@ -29,13 +29,9 @@
             postingList : []
         }
     },
-    methods: {
-        
-    },
     async mounted (){
         const getPostingAll = await getListPosting()
         this.postingList = getPostingAll.data
-        console.log(this.postingList);
     },
     components: {
         Navbar,
