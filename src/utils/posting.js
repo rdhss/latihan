@@ -8,3 +8,7 @@ export const getListPosting = () => {
 export const getPostById = id => {
     return axios.get(urlPosting + `/${id}`)
 }
+
+export const getPostCommentById = id => {
+    return axios.get(urlPosting + `/${id}/comments`)
+}
