@@ -4,3 +4,7 @@ const urlPosting = "https://jsonplaceholder.typicode.com/posts"
 export const getListPosting = () => {
     return axios.get(urlPosting)
 }
+
+export const getPostById = id => {
+    return axios.get(urlPosting + `/${id}`)
+}

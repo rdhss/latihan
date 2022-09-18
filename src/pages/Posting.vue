@@ -30,8 +30,8 @@
         }
     },
     async mounted (){
-        const getPostingAll = await getListPosting()
-        this.postingList = getPostingAll.data
+        const resultPostingList = await getListPosting()
+        this.postingList = resultPostingList.data
     },
     components: {
         Navbar,
