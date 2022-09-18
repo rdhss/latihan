@@ -33,7 +33,7 @@
                 <router-link to="/posting">
                     <li><a>List Post</a></li>
                 </router-link>
-                <router-link to="/photos">
+                <router-link to="#">
                     <li><a>List Photos</a></li>
                 </router-link>
             </ul>
@@ -42,10 +42,10 @@
 
             <div v-if="!token" class="flex w-48 justify-between">
                 <ButtonSubmit label="Login" />
-                <ButtonSubmit label="Register" />
+                <ButtonSubmit label="Register" @onsubmit="onRegister" />
             </div>
 
-            <div v-if="token" class="dropdown dropdown-end">
+            <div v-else class="dropdown dropdown-end">
                 <label tabindex="0" class="btn btn-ghost btn-circle avatar">
                     <div class="w-10 rounded-full">
                         <img src="https://placeimg.com/80/80/people" />
@@ -59,7 +59,7 @@
                         </a>
                     </li>
                     <li><a>Settings</a></li>
-                    <li><a>Logout</a></li>
+                    <li @click="logoutHandler"><a>Logout</a></li>
                 </ul>
             </div>
             
@@ -77,8 +77,19 @@
             token: localStorage.getItem('token')
         }
     },
+    methods: {
+        logoutHandler(){
+            localStorage.clear('token')
+            setTimeout(()=> {
+                this.$router.replace('/login')
+            }, 1500)
+        },
+        onRegister(){
+            this.$router.push('/register')
+        }
+    },
     components: { ButtonSubmit }
 }
 </script>
 
-<!-- noted : semua handler dan sisa route nyusul -->
+<!-- noted : semua handler dan sisa route nyusul, isi sisa route yang belum diarahin seusai name nya -->
