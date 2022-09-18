@@ -53,14 +53,18 @@
         }
     },
     async mounted() {
-        const resultUserPostingData = await getPostById(this.$route.params.id);
-        this.userPostingData = resultUserPostingData.data;
+        try {
+            const resultUserPostingData = await getPostById(this.$route.params.id);
+            this.userPostingData = resultUserPostingData.data;
 
-        const resultUserData = await getUserById(this.userPostingData.userId)
-        this.userData = resultUserData.data
-        
-        const resultUsersComment = await getPostCommentById(this.$route.params.id)
-        this.usersComment = resultUsersComment.data
+            const resultUserData = await getUserById(this.userPostingData.userId)
+            this.userData = resultUserData.data
+            
+            const resultUsersComment = await getPostCommentById(this.$route.params.id)
+            this.usersComment = resultUsersComment.data
+        } catch (error) {
+            console.log(error)
+        }
     },
     components: {
     Navbar,

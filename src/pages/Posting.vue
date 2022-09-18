@@ -30,8 +30,12 @@
         }
     },
     async mounted (){
-        const resultPostingList = await getListPosting()
-        this.postingList = resultPostingList.data
+        try {
+            const resultPostingList = await getListPosting()
+            this.postingList = resultPostingList.data
+        } catch (error) {
+            console.log(error)
+        }
     },
     components: {
         Navbar,
