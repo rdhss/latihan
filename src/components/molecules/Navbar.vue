@@ -27,19 +27,18 @@
                 <router-link to="/">
                     <li><a>Home</a></li>
                 </router-link>
-                <router-link to="#">
+                <router-link to="/userList">
                     <li><a>List Users</a></li>
                 </router-link>
                 <router-link to="/posting">
                     <li><a>List Post</a></li>
                 </router-link>
-                <router-link to="#">
+                <router-link to="/photoList">
                     <li><a>List Photos</a></li>
                 </router-link>
             </ul>
         </div>
         <div class="navbar-end">
-
             <div v-if="!token" class="flex w-48 justify-between">
                 <ButtonSubmit label="Login" />
                 <ButtonSubmit label="Register" @onsubmit="onRegister" />
@@ -62,7 +61,6 @@
                     <li @click="logoutHandler"><a>Logout</a></li>
                 </ul>
             </div>
-            
         </div>
     </header>
 </template>
