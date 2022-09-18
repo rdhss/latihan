@@ -1,15 +1,45 @@
 <template>
     <main>
         <Navbar />
-        <p>Posting Pages</p>
+        
+        <div class="p-5 flex flex-wrap">
+            <CardPosting 
+                v-for="(data, idx) in postingList"
+                :key="idx"
+                :id="data.id"
+                :title="data.title"
+                :body="data.body"
+                class="mb-5"
+            />
+        </div>
+        
+
     </main>
 </template>
 
 <script>
     import Navbar from '@/components/molecules/Navbar.vue';
-    
+    import CardPosting from '@/components/molecules/CardPosting.vue';
+    import { getListPosting } from '@/utils/posting';
+
     export default {
     name: "PostingPage",
-    components: { Navbar }
+    data(){
+        return{
+            postingList : []
+        }
+    },
+    methods: {
+        
+    },
+    async mounted (){
+        const getPostingAll = await getListPosting()
+        this.postingList = getPostingAll.data
+        console.log(this.postingList);
+    },
+    components: {
+        Navbar,
+        CardPosting,
+    }
 }
 </script>
