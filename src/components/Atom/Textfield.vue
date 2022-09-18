@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="flex justify-between w-72">
     <label>{{ label }}</label>
     <input type="text" v-model="changeInput" />
   </div>
