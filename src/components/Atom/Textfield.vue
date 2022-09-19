@@ -18,12 +18,20 @@ export default {
         return this.value;
       },
       set(val) {
-        this.$emit("change", val);
+        const variable = {
+          name : this.name,
+          val
+        }
+        this.$emit("change", variable);
       },
     },
   },
   props: {
     label: {
+      type: String,
+      required: true,
+    },
+    name: {
       type: String,
       required: true,
     },

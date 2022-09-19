@@ -25,6 +25,6 @@
 <script>
     export default {
     name: "CardPosting",
-    props: ["id","title", "body"],
+    props: ["id","title", "body", "payload"]
 }
 </script>

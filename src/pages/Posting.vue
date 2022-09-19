@@ -7,6 +7,7 @@
                 v-for="(data, idx) in postingList"
                 :key="idx"
                 :id="data.id"
+                :data="payload"
                 :title="data.title"
                 :body="data.body"
                 class="mb-5"

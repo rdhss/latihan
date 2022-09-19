@@ -22,7 +22,7 @@
     </main>
 </template>
 
-<script>
+<script>    
     import Textfield from '@/components/Atom/Textfield.vue';
     import ButtonSubmit from '@/components/Atom/ButtonSubmit.vue';
 
