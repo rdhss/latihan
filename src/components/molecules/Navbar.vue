@@ -9,13 +9,13 @@
                     <router-link to="/">
                         <li><a>Home</a></li>
                     </router-link>
-                    <router-link to="#">
+                    <router-link to="/userList">
                         <li><a>List Users</a></li>
                     </router-link>
                     <router-link to="/posting">
                         <li><a>List Post</a></li>
                     </router-link>
-                    <router-link to="#">
+                    <router-link to="/photoList">
                         <li><a>List Photos</a></li>
                     </router-link>
                 </ul>
