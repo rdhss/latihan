@@ -2,18 +2,18 @@
     <main>
         <Navbar />
         
-        <div class="p-5 flex flex-wrap">
+        <div v-if="isLoading" class="flex justify-center h-screen items-center">
+            <img :src="loadingImg" alt="loading" />
+        </div>
+
+        <div class="p-5 flex flex-wrap" v-else>
             <CardPosting 
                 v-for="(data, idx) in postingList"
                 :key="idx"
-                :id="data.id"
-                :data="payload"
-                :title="data.title"
-                :body="data.body"
+                :payload="data"
                 class="mb-5"
             />
         </div>
-        
 
     </main>
 </template>
@@ -27,13 +27,16 @@
     name: "PostingPage",
     data(){
         return{
-            postingList : []
+            postingList : [],
+            isLoading : true,
+            loadingImg : require('@/assets/spin.svg')
         }
     },
     async mounted (){
         try {
             const resultPostingList = await getListPosting()
             this.postingList = resultPostingList.data
+            this.isLoading = !this.isLoading
         } catch (error) {
             console.log(error)
         }
