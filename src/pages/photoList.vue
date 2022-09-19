@@ -1,13 +1,13 @@
 <template>
     <div>
         <Navbar/>
+        <div v-if="loading" class="mt-5 flex justify-center">
+            <img :src="require('@/assets/spin.svg')"  />
+        </div>
         <div class="grid gap-3 grid-cols-3 mt-8">
             <CardPhoto 
             v-for="(element, index) in photoList" :key="index"
-            :id="element.id"
-            :albumId="element.albumId"
-            :url="element.url"
-            :title="element.title"
+            :data="element"
             />
         </div>
     </div>
@@ -27,12 +27,15 @@ import { getListPhoto } from '@/utils/photo';
 },
     data(){
         return{
-            photoList : []
+            photoList : [],
+            loading : true,
         }
     },
     async mounted (){
+      this.loading = true
       const resultPostingList = await getListPhoto()
       this.photoList = resultPostingList.data
+      this.loading = false
   },
 
 }

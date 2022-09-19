@@ -10,9 +10,9 @@
             <div>
                 <p class="text-center text-3xl font-bold text-white mb-5">Register</p>
                 <div class="bg-black-rgba p-10 rounded-md">
-                    <Textfield label="username" @change="usernameChange" />
-                    <Textfield label="email" @change="emailChange" class="pt-5" />
-                    <Textfield label="password" @change="passwordChange" class="pt-5" />
+                    <Textfield label="username" @change="inputChange" name="username" />
+                    <Textfield label="email" @change="inputChange" class="pt-5" name="email" />
+                    <Textfield label="password" @change="inputChange" class="pt-5" name="password" />
                     <div class="flex justify-end pt-5">
                         <ButtonSubmit label="Register" @onsubmit="registerHandler" />
                     </div>
@@ -22,7 +22,7 @@
     </main>
 </template>
 
-<script>
+<script>    
     import Textfield from '@/components/Atom/Textfield.vue';
     import ButtonSubmit from '@/components/Atom/ButtonSubmit.vue';
 
@@ -36,20 +36,17 @@
             }
         },
         methods: {
-            usernameChange(value){
-                this.username = value
-            },
-            emailChange(value){
-                this.email = value
-            },
-            passwordChange(value){
-                this.password = value
+            inputChange(data){
+                const { name, val } = data
+                if(name === "username") this.username = val
+                if(name === "email") this.email = val
+                if(name === "password") this.password = val
             },
             registerHandler(){
                 const user = {
-                    username : this.username.target.value,
-                    email:this.email.target.value,
-                    password: this.password.target.value
+                    username : this.username,
+                    email:this.email,
+                    password: this.password
                 }
                 localStorage.setItem('user', JSON.stringify(user))
                 setTimeout(() => {

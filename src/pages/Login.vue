@@ -4,8 +4,8 @@
             <div>
                 <p class="text-center text-3xl font-bold text-white mb-5">Login</p>
                 <div class="bg-black-rgba p-10 rounded-md">
-                    <Textfield label="email" @change="emailChange" class="pt-5" />
-                    <Textfield label="password" @change="passwordChange" class="pt-5" />
+                    <Textfield label="email" @change="inputChange" class="pt-5" name="email"/>
+                    <Textfield label="password" @change="inputChange" class="pt-5" name="password"/>
                     <div class="flex justify-end pt-5">
                         <ButtonSubmit class="mr-3"  label="Register" @onsubmit="registerHandler" />
                         <ButtonSubmit label="Login" @onsubmit="LoginHandler" />
@@ -36,6 +36,15 @@
             }
         },
         methods: {
+            inputChange(data){
+                const { name , val } = data
+                if(name == "email"){
+                    this.email = val
+                } else if (name == "password"){
+                    this.password = val
+                }
+
+            },
             emailChange(value){
                 this.email = value
             },
@@ -48,11 +57,12 @@
             LoginHandler(){
                 this.Datare = false
                 this.wrongData = false
+                console.log(this.password)
                 const user = JSON.parse(localStorage.getItem('user'))
                 if(user == undefined){
                     this.Datare = true
                 }
-                else if (user.email === this.email.target.value && user.password === this.password.target.value) {
+                else if (user.email === this.email && user.password === this.password) {
                     localStorage.setItem('token', 1)
                     this.$router.push('/')      
                 } 

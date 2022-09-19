@@ -1,9 +1,9 @@
 <template>
     <div class="mt-3">
         <div class="bg-white p-5 shadow-md rounded-md">
-            <p class="font-bold text-lg">{{name}}</p>
-            <p class="text-xs text-slate-600">{{email}}</p>
-            <p class="pt-1">{{body}}</p>
+            <p class="font-bold text-lg">{{payload.name}}</p>
+            <p class="text-xs text-slate-600">{{payload.email}}</p>
+            <p class="pt-1">{{payload.body}}</p>
         </div>
     </div>
 </template>
@@ -12,18 +12,10 @@
     export default {
         name: 'CardCommentComponent',
         props: {
-            name: {
-                type:String,
-                required:false,
-                default:'None'
-            }, email: {
-                type:String,
-                required:true,
-            }, body: {
-                type:String,
-                required:false,
-                default:'None'
-            }, 
+            payload : {
+                type: Object,
+                required: true
+            }
         }
     }
 </script>
