@@ -1,6 +1,9 @@
 <template>
     <div>
         <Navbar/>
+        <div v-if="loading" class="mt-5 flex justify-center">
+            <img :src="require('@/assets/spin.svg')"  />
+        </div>
         <div class="grid grid-cols-3 gap-2 mt-5 gap-y-4">
                 <CardUser
                 v-for="(element, index) in userList" :key="index"
@@ -24,12 +27,15 @@ import { getListUsers } from '@/utils/users';
 },
 data(){
         return{
-            userList : []
+            userList : [],
+            loading : true,
         }
     },
 async mounted (){
+        this.loading = true
         const resultPostingList = await getListUsers()
         this.userList = resultPostingList.data
+        this.loading = false
     },
 }
 </script>
