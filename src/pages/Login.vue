@@ -57,11 +57,12 @@
             LoginHandler(){
                 this.Datare = false
                 this.wrongData = false
+                console.log(this.password)
                 const user = JSON.parse(localStorage.getItem('user'))
                 if(user == undefined){
                     this.Datare = true
                 }
-                else if (user.email === this.email.target.value && user.password === this.password.target.value) {
+                else if (user.email === this.email && user.password === this.password) {
                     localStorage.setItem('token', 1)
                     this.$router.push('/')      
                 } 

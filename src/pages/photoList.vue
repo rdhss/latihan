@@ -4,10 +4,7 @@
         <div class="grid gap-3 grid-cols-3 mt-8">
             <CardPhoto 
             v-for="(element, index) in photoList" :key="index"
-            :id="element.id"
-            :albumId="element.albumId"
-            :url="element.url"
-            :title="element.title"
+            :data="element"
             />
         </div>
     </div>
