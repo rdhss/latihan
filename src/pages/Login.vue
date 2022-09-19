@@ -13,6 +13,7 @@
                 </div>
                 <div class="pt-10">
                     <h1 v-if="wrongData" class="text-center text-white font-bold text-xl">Wrong Password / Email</h1>
+                    <h1 v-if="Datare" class="text-center text-white font-bold text-xl">user not registered</h1>
                 </div>
             </div>
         </div>
@@ -29,6 +30,7 @@
             return{
                 user : localStorage.getItem(''),
                 wrongData: false,
+                Datare: false,
                 email:'',
                 password:''
             }
@@ -44,14 +46,17 @@
                 this.$router.push('/register')        
             },
             LoginHandler(){
+                this.Datare = false
                 this.wrongData = false
                 const user = JSON.parse(localStorage.getItem('user'))
-                if (user.email === this.email.target.value) {
+                if(user == undefined){
+                    this.Datare = true
+                }
+                else if (user.email === this.email.target.value && user.password === this.password.target.value) {
                     localStorage.setItem('token', 1)
                     this.$router.push('/')      
-                } else {
-                    console.log(user.email + "<- local")
-                    console.log(this.username.target.value + "<- data")
+                } 
+                else {
                     this.wrongData = true
                 }
                 

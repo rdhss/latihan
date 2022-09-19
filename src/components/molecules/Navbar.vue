@@ -89,5 +89,3 @@
     components: { ButtonSubmit }
 }
 </script>
-
-<!-- noted : semua handler dan sisa route nyusul, isi sisa route yang belum diarahin seusai name nya -->
